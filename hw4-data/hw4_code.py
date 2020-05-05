@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[81]:
+# In[2]:
 
 
 import pandas as pd
@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[82]:
+# In[3]:
 
 
 #1(a)
@@ -19,13 +19,13 @@ scores.columns = ['Team_A_index','Team_A_points',
 scores.head(10)
 
 
-# In[83]:
+# In[4]:
 
 
 scores['Team_A_index'].nunique()
 
 
-# In[84]:
+# In[5]:
 
 
 #construct random walk matrix
@@ -51,25 +51,26 @@ for i in range(0, scores.shape[0]):
         RW_M[int(j2), int(j1)] += points_j1/(points_j1+points_j2)
 
 
-# In[85]:
+# In[6]:
 
 
 RW_M
 
 
-# In[86]:
+# In[21]:
 
 
 #team name list
 team_name = pd.read_csv('TeamNames.txt',sep="\n", header=None)
 
 
-# In[87]:
+# In[49]:
 
 
 def rank_top25_team(t):
     M = RW_M/np.sum(RW_M, axis=1).reshape(-1,1)
-    w0 = np.ones(RW_M.shape[0])*np.array(1/(RW_M.shape[0])).reshape(1,-1)
+    w0 = np.random.uniform(size=(1,769))
+    w0 = w0/np.sum(w0, axis=1)
     W_t = np.matmul(w0,M)
     for i in range(t-1):
         W_t = np.matmul(W_t,M)
@@ -80,7 +81,7 @@ def rank_top25_team(t):
     return top25
 
 
-# In[261]:
+# In[50]:
 
 
 t_10 = rank_top25_team(10)
@@ -89,13 +90,13 @@ t_1000 = rank_top25_team(1000)
 t_10000 = rank_top25_team(10000)
 
 
-# In[262]:
+# In[51]:
 
 
 multi_table([t_10,t_100,t_1000,t_10000])
 
 
-# In[96]:
+# In[48]:
 
 
 #1(b)
@@ -109,7 +110,8 @@ W_inf = u1.flatten()/np.sum(u1.flatten())
 #normalized random walk matrix
 M = RW_M/np.sum(RW_M, axis=1).reshape(-1,1)
 #w_0
-w0 = np.ones(RW_M.shape[0])*np.array(1/(RW_M.shape[0])).reshape(1,-1)
+w0 = np.random.uniform(size=(1,769))
+w0 = w0/np.sum(w0, axis=1)
 #w_1
 W_t = np.matmul(w0,M)
 
@@ -220,7 +222,7 @@ for i in range(weight_column.shape[1]):
     final_table.append(topic)  
 
 
-# In[246]:
+# In[27]:
 
 
 #display tables
