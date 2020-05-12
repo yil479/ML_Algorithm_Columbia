@@ -5,3 +5,7 @@
 
 ## HW2:
 #### Naieve bayes, KNN, Guassian process
+
+## HW3:
+#### K means, EM, Matrix factorization
+
