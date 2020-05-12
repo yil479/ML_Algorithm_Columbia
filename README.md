@@ -9,3 +9,6 @@
 ## HW3:
 #### K means, EM, Matrix factorization
 
+## HW4:
+#### Marcov chain, NMF
+
