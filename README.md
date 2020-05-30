@@ -4,7 +4,7 @@
 #### Maximum likelihood, MAP, ridge regression, polynomial regression
 
 ## HW2:
-#### Naieve bayes, KNN, Guassian process
+#### Naieve bayes, KNN, Guassian process(data)
 
 ## HW3:
 #### K means, EM, Matrix factorization
